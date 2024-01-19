@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #76edebe0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #76edebe0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+}
+
+input {
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+}
+
+  </style>
+    <div class="container">
+        <h2>Citizen Registration Form</h2>
+        <form method="POST" action="/register">
+            <label for="username">Firstname:</label>
+            <input type="text" name="username" required><br>
+                        
+          <label for="secondname">Second name;</label>
+          <input type="text" name="Secondname" required><br>
+          
+          <label for="Lastname">Last name;</label>
+          <input type="text" name="lastname" required><br>
+            <label for="email">Email:</label>
+            <input type="email" name="email" required><br>
+            <label for="phone number">Phone number;</label>
+            <input type="Phone number" name="phone number" required><br>
+
+            <label for="password">Password:</label>
+            <input type="password"id="textPassword"name="password"
+            minlength="8"
+          required>
+            
+            <label for="re-type Password" name ="re-type password" required>re-type Password<br></label>
+            
+             <input type="Password" name="re-type Password" required><br>
+
+            <input type="submit" value="Register">
+            if you already have an accoung just log in!!
+      <button type="submit"><a href="Form.html">Log in</a></button>
+      <br><br>
+        </form>
+    </div>
+</body>
+</html>

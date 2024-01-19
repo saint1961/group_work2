@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Colored Form</title>
+</head>
+        <h2>Log in </h2>
+<style>
+    <div class="container">
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: lightblue;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+}
+
+input {
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+}
+
+</style>
+<body>
+  <div class="container">
+    <form id="colorForm">
+      <label for="username">UserName:</label>
+      <input type="text" id="username" name="name">
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password">
+
+      <input type="Submit" name="Log in"
+      <br><br>
+      You dont have an account please register!
+        
+   <button type="Submit"><a href="Registration.html">Registration</a></a></button>
+   
+    </form>
+  </div>
+
+  <script>
+        function toggleForm() {
+            var registrationForm = document.getElementById('registrationForm');
+            var signInForm = document.getElementById('signInForm');
+            
+            registrationForm.style.display = (registrationForm.style.display === 'none') ? 'block' : 'none';
+            signInForm.style.display = (signInForm.style.display === 'none') ? 'block' : 'none';
+        }
+    </script>
+<dv container="marquee-container">
+    <marquee behavior="scrolling" direction="right-left" scrolling amount="20">
+     <img src="2 - Copy.jpg"widith="200px">
+</body>
+</html>
+

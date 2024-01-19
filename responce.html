@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citizen-Representative Communication</title>
+    <style>
+        /* Your CSS styles go here */
+        .query {
+            background-color: rgb(32, 139, 64);
+            margin-bottom: 10px;
+            border: 1px solid rgb(128, 128, 128);
+            padding: 10px;
+        }
+      body{ 
+
+        .container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: rgb(128, 128, 128);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+      }
+        .response-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgb(128, 128, 128);
+            padding: 20px;
+            z-index: 1;
+            border: 1px solid rgb(128, 128, 128);
+        }
+    </style>
+</head>
+<body>
+    <h1>Citizen Dashboard</h1>
+
+    <div id="queriesContainer">
+        <!-- Queries will be dynamically added here using JavaScript -->
+    </div>
+
+    <div id="responseModal" class="response-modal">
+        <h2>Response from Representative</h2>
+        <p id="responseContent"></p>
+        <button onclick="closeModal()">Close</button>
+    </div>
+
+    <script>
+        // Sample data for queries
+        var queries = [
+            { id: 1, title: 'Query 1', description: 'Description for Query 1' },
+            { id: 2, title: 'Query 2', description: 'Description for Query 2' },
+            { id: 3, title: 'Query 3', description: 'Description for Query 3' },
+            // Add more queries with different categories and jurisdictions
+        ];
+
+        // Display all queries initially
+        displayQueries(queries);
+
+        function displayQueries(queriesToShow) {
+            var queriesContainer = document.getElementById('queriesContainer');
+            queriesContainer.innerHTML = ''; // Clear existing queries
+
+            queriesToShow.forEach(function (query) {
+                var queryElement = document.createElement('div');
+                queryElement.classList.add('query');
+                queryElement.innerHTML = `
+                    <h3>${query.title}</h3>
+                    <p>${query.description}</p>
+                    <label for="categoryDropdown">Choose Category:</label>
+                    <select id="categoryDropdown">
+                        <option value="infrastructure">Infrastructure</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="Education">Education</option>
+            <option value="Insuarance">Insuarance</option>
+            <option value="Water services">Water services</option>
+                        <!-- Add more categories as needed -->
+                    </select><br>
+                </select><br>
+                    <label for="categoryDropdown">Choose City:</label>
+                    <select id="categoryDropdown">
+                        <option value="Dar es Salaam">Dar es Salaam</option>
+                        <option value="Dodoma">Dodoma</option>
+                        <option value="Mwanza">Mwanza</option>
+            <option value="Mara">Mara</option>
+            <option value="Kigoma">Kigoma</option>
+                        <!-- Add more categories as needed -->
+                    </select><br><br>
+                    <button onclick="openResponseModal(${query.id})">Check for Responses</button>
+                `;
+                queriesContainer.appendChild(queryElement);
+            });
+        }
+
+        function openResponseModal(queryId) {
+            // For simplicity, let's simulate a response
+            var responseContent = `Representative's response to Query ${queryId}`;
+
+            // Display the response modal with the query details
+            document.getElementById('responseContent').innerText = responseContent;
+            document.getElementById('responseModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            // Hide the response modal
+            document.getElementById('responseModal').style.display = 'none';
+        }
+
+        // Simulate alerting the citizen
+        setInterval(function() {
+            alert('You have a new response from a representative!');
+        }, 50000); // Alert every 5 seconds (adjust as needed)
+    </script>
+</body>
+</html>

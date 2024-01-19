@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Representative Dashboard</title>
+    <style>
+        /* Your CSS styles go here */
+        .query {
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .response-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            z-index: 1;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Representative Dashboard</h1>
+
+    <div id="queriesContainer">
+        <!-- Queries will be dynamically added here using JavaScript -->
+    </div>
+
+    <div id="responseModal" class="response-modal">
+        <h2>Respond to Query</h2>
+        <label for="category">Category:</label>
+        <select id="responseCategory">
+            <option value="infrastructure">Infrastructure</option>
+            <option value="healthcare">Healthcare</option>
+            <option value="Education">Education</option>
+            <option value="Insuarance">Insuarance</option>
+            <option value="Water services">Water services</option>
+            <!-- Add more categories as needed -->
+        </select><br>
+        <textarea id="responseText" rows="4" cols="50" placeholder="Write your response"></textarea><br>
+        <button onclick="sendResponse()">Send Response</button>
+        <button onclick="closeModal()">Close</button>
+    </div>
+
+    <script>
+        // Sample data for queries
+        var queries = [
+            { id: 1, title: 'Query 1', description: 'Description for Query 1'},
+            { id: 2, title: 'Query 2', description: 'Description for Query 2' },
+            { id: 3, title: 'Query 3', description: 'Description for Query 3' },
+            // Add more queries with different categories and jurisdictions
+        ];
+
+        // Display all queries initially
+        displayQueries(queries);
+
+        function displayQueries(queriesToShow) {
+            var queriesContainer = document.getElementById('queriesContainer');
+            queriesContainer.innerHTML = ''; // Clear existing queries
+
+            queriesToShow.forEach(function (query) {
+                var queryElement = document.createElement('div');
+                queryElement.classList.add('query');
+                queryElement.innerHTML = `
+                    <h3>${query.title}</h3>
+                    <p>${query.description}</p>
+                    <label for="categoryDropdown">Choose Category:</label>
+                    <select id="categoryDropdown">
+                        <option value="infrastructure">Infrastructure</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="Education">Education</option>
+            <option value="Insuarance">Insuarance</option>
+            <option value="Water services">Water services</option>
+                        <!-- Add more categories as needed -->
+                    </select><br>
+                    <label for="categoryDropdown">Choose City:</label>
+                    <select id="categoryDropdown">
+                        <option value="Dar es Salaam">Dar es Salaam</option>
+                        <option value="Dodoma">Dodoma</option>
+                        <option value="Mwanza">Mwanza</option>
+            <option value="Mara">Mara</option>
+            <option value="Kigoma">Kigoma</option>
+                        <!-- Add more categories as needed -->
+                    </select><br>
+                    <button onclick="openResponseModal(${query.id})">Respond</button>
+                `;
+                queriesContainer.appendChild(queryElement);
+            });
+        }
+
+        function openResponseModal(queryId) {
+            // Assuming you have a way to fetch the query details from the server
+            var query = queries.find(q => q.id === queryId);
+
+            if (query) {
+                // Display the response modal with the query details
+                document.getElementById('responseCategory').value = query.category;
+                document.getElementById('responseText').value = ''; // Clear previous response
+                document.getElementById('responseModal').style.display = 'block';
+            } else {
+                alert('Error: Query not found.');
+            }
+        }
+
+        function sendResponse() {
+            var responseCategory = document.getElementById('responseCategory').value;
+            var responseText = document.getElementById('responseText').value;
+
+            // Assuming you have a way to send the response to the server and handle it
+
+            // For simplicity, let's just log the response in the console
+            console.log('Category:', responseCategory);
+            console.log('Response:', responseText);
+
+            // Close the modal after responding
+            closeModal();
+        }
+
+        function closeModal() {
+            // Hide the response modal
+            document.getElementById('responseModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
